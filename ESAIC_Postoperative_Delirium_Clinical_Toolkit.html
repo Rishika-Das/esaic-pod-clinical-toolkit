@@ -982,6 +982,124 @@
         scroll-behavior: auto !important;
       }
     }
+    
+/* ================================
+   RESPONSIVE MOBILE OPTIMIZATION
+================================ */
+
+/* Ensure full-screen layout */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+/* Main application container */
+#app,
+.app,
+.container,
+main {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Remove unnecessary desktop constraints */
+@media (max-width: 768px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    #app,
+    .app,
+    .container,
+    main {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    /* Headings */
+    h1 {
+        font-size: clamp(23px, 6vw, 30px);
+    }
+
+    h2 {
+        font-size: clamp(19px, 5vw, 24px);
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    /* Cards */
+    .card,
+    .panel,
+    .section {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Responsive grids */
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Buttons */
+    button {
+        max-width: 100%;
+        min-height: 44px;
+    }
+
+    /* Form elements */
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+        font-size: 16px;
+    }
+
+    /* Tables */
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    /* Images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Tablet optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #app,
+    .app,
+    .container,
+    main {
+        max-width: 100%;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
   </style>
 </head>
 <body>
