@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="artifact-type" content="tool">
   <meta name="design-style" content="vitals">
   <title>ESAIC Postoperative Delirium (POD) Decision Support Toolkit</title>
@@ -1099,6 +1099,575 @@ main {
         padding-right: 24px;
     }
 }
+
+
+    /* ================================================================
+       MOBILE & TABLET LAYOUT REFINEMENT
+       Keeps the desktop layout intact and adapts the existing toolkit
+       components (rather than introducing replacement markup).
+       ================================================================ */
+
+    html {
+      width: 100%;
+      min-width: 320px;
+      min-height: 100%;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      width: 100%;
+      min-width: 320px;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    .app-container {
+      width: 100%;
+      min-width: 0;
+    }
+
+    img,
+    svg,
+    video,
+    canvas {
+      max-width: 100%;
+    }
+
+    /* At tablet/mobile widths, every grid child must be allowed to shrink. */
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .grid-sidebar,
+    .criterion-tile,
+    .card,
+    .card-title-group,
+    .form-group {
+      min-width: 0;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        border-top-width: 4px;
+        font-size: 16px;
+      }
+
+      .app-container {
+        max-width: none;
+        margin: 0;
+        padding: 12px 12px calc(24px + env(safe-area-inset-bottom));
+      }
+
+      header.clinical-header {
+        gap: 12px;
+        padding: 8px 0 16px;
+        margin-bottom: 16px;
+      }
+
+      .header-top {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+      }
+
+      .header-titles {
+        max-width: none;
+        min-width: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      strong,
+      label,
+      .criterion-title,
+      .checklist-title,
+      .checklist-desc {
+        overflow-wrap: anywhere;
+      }
+
+      .header-tagline {
+        line-height: 1.45;
+      }
+
+      .header-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        gap: 8px;
+      }
+
+      .header-actions .btn {
+        width: 100%;
+        min-width: 0;
+        min-height: 48px;
+        padding: 9px 10px;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.25;
+      }
+
+      .scenario-banner {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .scenario-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        gap: 8px;
+      }
+
+      .scenario-btn {
+        width: 100%;
+        min-width: 0;
+        min-height: 48px;
+        padding: 9px 10px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+      }
+
+      .scenario-btn i {
+        flex: 0 0 auto;
+        margin-top: 1px;
+      }
+
+      /* The section tabs scroll within their own strip, not the page. */
+      .toolkit-nav {
+        width: 100%;
+        max-width: 100%;
+        gap: 4px;
+        margin: 0 0 18px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+
+      .nav-tab {
+        flex: 0 0 auto;
+        max-width: 82vw;
+        min-height: 48px;
+        padding: 10px 12px;
+        gap: 7px;
+        font-size: 14px;
+        white-space: normal;
+        text-align: left;
+      }
+
+      .nav-tab i {
+        flex: 0 0 auto;
+      }
+
+      .nav-tab span {
+        white-space: normal;
+      }
+
+      .grid-sidebar,
+      .grid-2,
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .card {
+        padding: 16px;
+        margin-bottom: 14px;
+        border-radius: 12px;
+      }
+
+      .card-header {
+        align-items: flex-start;
+        gap: 9px;
+      }
+
+      .card-title-group {
+        flex: 1 1 100%;
+      }
+
+      .card-header > .chip {
+        max-width: 100%;
+      }
+
+      .chip {
+        max-width: 100%;
+        white-space: normal;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+      }
+
+      .criterion-header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .criterion-header .chip {
+        flex: 0 1 auto;
+      }
+
+      .criterion-tile {
+        padding: 12px;
+      }
+
+      .cci-item-list {
+        grid-template-columns: minmax(0, 1fr);
+        max-height: 260px;
+      }
+
+      .checkbox-label {
+        align-items: flex-start;
+        line-height: 1.35;
+      }
+
+      .checkbox-label input[type="checkbox"],
+      .checklist-item input[type="checkbox"] {
+        flex: 0 0 auto;
+        width: 18px;
+        height: 18px;
+        margin-top: 3px;
+      }
+
+      .checklist-group-header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .checklist-group-header > div {
+        min-width: 0;
+        flex: 1 1 180px;
+      }
+
+      .checklist-item {
+        min-height: 48px;
+        padding: 11px 12px;
+        gap: 10px;
+      }
+
+      .checklist-text {
+        min-width: 0;
+      }
+
+      .advisory-box {
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .advisory-box > div {
+        min-width: 0;
+        flex: 1 1 auto;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      select,
+      textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        font-size: 16px;
+      }
+
+      input[type="range"] {
+        min-height: 32px;
+        margin: 4px 0;
+        touch-action: pan-y;
+      }
+
+      button,
+      .btn,
+      .scenario-btn,
+      .seg-btn,
+      .nav-tab {
+        touch-action: manipulation;
+      }
+
+      .btn {
+        min-height: 44px;
+        white-space: normal;
+        line-height: 1.25;
+      }
+
+      .btn-sm {
+        min-height: 40px;
+      }
+
+      .seg-group {
+        min-width: 0;
+      }
+
+      .seg-btn {
+        min-width: 0;
+        min-height: 44px;
+        padding: 8px 6px;
+        overflow-wrap: anywhere;
+      }
+
+      .metric-hero {
+        padding: 14px 10px;
+      }
+
+      .metric-value {
+        font-size: clamp(1.85rem, 9vw, 2.25rem);
+      }
+
+      .dose-counter-box {
+        padding: 12px;
+      }
+
+      .dose-row {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 9px;
+      }
+
+      .dose-row > span,
+      .dose-row > div {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      .dose-row > div:last-child {
+        display: flex;
+        flex: 1 1 100%;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .dose-row > div:last-child .btn {
+        flex: 1 1 auto;
+      }
+
+      .eeg-console {
+        padding: 12px;
+        min-width: 0;
+      }
+
+      .eeg-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .eeg-toolbar > div:first-child {
+        min-width: 0;
+        align-items: flex-start !important;
+      }
+
+      .eeg-toolbar > div:first-child span {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .eeg-readouts {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .eeg-readout-pill {
+        flex: 1 1 82px;
+        min-width: 0;
+        padding: 7px 6px;
+      }
+
+      .eeg-readout-pill .label-caps {
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      .eeg-readout-val {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        text-align: center;
+      }
+
+      .canvas-container {
+        min-width: 0;
+        min-height: 0 !important;
+        width: 100%;
+      }
+
+      canvas.eeg-canvas {
+        display: block;
+        width: 100%;
+        height: clamp(110px, 32vw, 145px);
+      }
+
+      #canvas-dsa {
+        height: clamp(95px, 28vw, 120px);
+      }
+
+      .canvas-overlay-label {
+        max-width: calc(100% - 16px);
+        font-size: 10px;
+        line-height: 1.25;
+        white-space: normal;
+      }
+
+      .dsa-frequency-labels {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 5px 8px;
+        font-size: 10px;
+      }
+
+      .dsa-frequency-labels span {
+        flex: 1 1 38%;
+        min-width: 0;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      .modal-backdrop {
+        align-items: flex-start;
+        justify-content: center;
+        overflow-y: auto;
+        padding: max(10px, env(safe-area-inset-top)) 10px
+                 max(10px, env(safe-area-inset-bottom));
+      }
+
+      .modal-window {
+        width: 100%;
+        max-width: none;
+        max-height: calc(100dvh - 20px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+        margin: auto 0;
+        padding: 14px;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+      }
+
+      .modal-header {
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .modal-header > div {
+        min-width: 0;
+        flex: 1 1 auto;
+      }
+
+      .modal-header > button {
+        flex: 0 0 auto;
+      }
+
+      .table-responsive {
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+      }
+
+      table.guideline-table {
+        min-width: 620px;
+        width: 100%;
+      }
+
+      table.guideline-table th,
+      table.guideline-table td {
+        padding: 8px 10px;
+      }
+
+      .export-box {
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .toast-message {
+        left: 12px;
+        right: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom));
+        width: max-content;
+        max-width: calc(100vw - 24px);
+        margin: 0 auto;
+        overflow-wrap: anywhere;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .app-container {
+        padding-left: 9px;
+        padding-right: 9px;
+      }
+
+      .header-actions,
+      .scenario-buttons {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .header-actions .btn {
+        min-height: 44px;
+      }
+
+      .card {
+        padding: 13px;
+      }
+
+      .card-header {
+        flex-direction: column;
+      }
+
+      .card-header > .chip {
+        align-self: flex-start;
+      }
+
+      .scenario-btn {
+        min-height: 44px;
+      }
+
+      .dose-row > div:last-child .btn {
+        flex: 1 1 42%;
+      }
+
+      .modal-window {
+        padding: 12px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .app-container {
+        padding-left: 7px;
+        padding-right: 7px;
+      }
+
+      .nav-tab {
+        max-width: 88vw;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .card {
+        padding: 11px;
+      }
+
+      .eeg-readout-pill {
+        flex-basis: 76px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .app-container {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
 
   </style>
 </head>
